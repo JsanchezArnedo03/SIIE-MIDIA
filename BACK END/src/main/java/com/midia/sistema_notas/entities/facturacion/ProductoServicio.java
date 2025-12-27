@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.facturacion;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +27,6 @@ public class ProductoServicio {
     @ManyToOne
     @JoinColumn(name = "impuestos_aplicables")
     private Impuesto impuestoAplicable;
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

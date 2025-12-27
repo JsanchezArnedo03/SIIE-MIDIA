@@ -33,4 +33,7 @@ public class Estudiante {
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona id_persona;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

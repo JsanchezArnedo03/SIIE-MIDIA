@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.contabilidad;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import com.midia.sistema_notas.entities.gestion_academica.Persona;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,4 +30,7 @@ public class Contrato {
     private byte[] contratoPDF;
     @Column(name = "ruta_contrato")
     private String contratoRuta;
+
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

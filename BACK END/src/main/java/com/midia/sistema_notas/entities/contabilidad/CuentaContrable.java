@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.contabilidad;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,4 +24,6 @@ public class CuentaContrable {
     private String tipoCuenta;
     @Column(name = "naturaleza")
     private String naturaleza;
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

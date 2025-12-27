@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.seguridad;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import com.midia.sistema_notas.entities.gestion_academica.Persona;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,4 +24,7 @@ public class Credencial {
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona persona;
+    @ManyToOne
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

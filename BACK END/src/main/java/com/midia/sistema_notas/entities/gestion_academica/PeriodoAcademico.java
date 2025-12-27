@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.gestion_academica;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,7 @@ public class PeriodoAcademico {
     private Date fechaInicio;
     @Column(name = "fecha_fin")
     private Date fechaFin;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }
