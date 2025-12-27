@@ -17,7 +17,7 @@ public class Auditoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_auditoria")
     private Long idAuditoria;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa empresa;
     @ManyToOne
@@ -36,7 +36,7 @@ public class Auditoria {
     @Column(name = "fecha_accion")
     private java.time.LocalDateTime fechaAccion;
 
-    // Este método asegura que la fecha se ponga sola antes de guardar
+    // Este metodo asegura que la fecha se ponga sola antes de guardar
     @PrePersist
     protected void onCreate() {
         this.fechaAccion = java.time.LocalDateTime.now();

@@ -22,7 +22,7 @@ public class EmpleadoXAsignatura {
     @ManyToOne
     @JoinColumn(name = "id_empleado")
     private Persona empleado;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }

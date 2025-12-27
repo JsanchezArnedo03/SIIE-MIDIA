@@ -24,7 +24,7 @@ public class Credencial {
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona persona;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }

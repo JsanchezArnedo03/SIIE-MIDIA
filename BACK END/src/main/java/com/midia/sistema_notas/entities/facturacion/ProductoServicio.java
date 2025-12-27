@@ -27,6 +27,7 @@ public class ProductoServicio {
     @ManyToOne
     @JoinColumn(name = "impuestos_aplicables")
     private Impuesto impuestoAplicable;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }

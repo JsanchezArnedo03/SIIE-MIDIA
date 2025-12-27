@@ -18,7 +18,7 @@ public class LogAcceso {
     @Column(name = "id_log_acceso")
     private Long idLogAcceso;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa empresa;
 

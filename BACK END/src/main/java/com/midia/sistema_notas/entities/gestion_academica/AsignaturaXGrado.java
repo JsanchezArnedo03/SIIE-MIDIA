@@ -22,7 +22,7 @@ public class AsignaturaXGrado {
     @ManyToOne
     @JoinColumn(name = "id_grado")
     private Grado grado;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }
