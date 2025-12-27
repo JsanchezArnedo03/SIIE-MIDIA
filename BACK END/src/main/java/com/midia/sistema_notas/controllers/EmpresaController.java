@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +24,15 @@ public class EmpresaController {
         try {
             return ResponseEntity.ok(service.findById(id));
         } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<EmpresaDTO>> findAll() {
+        try {
+            return  ResponseEntity.ok(service.findAll());
+        }catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }

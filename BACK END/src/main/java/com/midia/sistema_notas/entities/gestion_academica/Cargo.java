@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.gestion_academica;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +16,9 @@ public class Cargo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cargo")
     private Long idCargo;
-
     @Column(name = "cargo")
     private String cargo;
+    @ManyToOne
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

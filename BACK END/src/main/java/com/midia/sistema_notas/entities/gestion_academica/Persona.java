@@ -34,7 +34,7 @@ public class Persona {
     private String telefono1;
     @Column(name = "email")
     private String email;
-    @ManyToOne(fetch = FetchType.EAGER) // Muchos estudiantes tienen un mismo tipo de documento
+    @ManyToOne(fetch = FetchType.EAGER) // Muchas personas tienen un mismo tipo de rol
     @JoinColumn(name = "id_rol")
     private Rol rol;
 }

@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.gestion_academica;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,4 +20,7 @@ public class Grado {
     private String grado;
     @Column(name = "cod_grado")
     private String codGrado;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

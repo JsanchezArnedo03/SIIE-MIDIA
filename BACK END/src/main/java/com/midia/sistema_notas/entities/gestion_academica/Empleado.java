@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.gestion_academica;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,4 +29,7 @@ public class Empleado {
     @OneToOne
     @JoinColumn(name = "id:persona")
     private Persona idPersona;
+    @ManyToOne
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }

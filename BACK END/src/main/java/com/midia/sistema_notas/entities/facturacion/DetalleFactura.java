@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.facturacion;
 
+import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,6 @@ public class DetalleFactura {
     private Integer cantidad;
     @Column(name = "precio_unitario")
     private Float precioUnitario;
+    @JoinColumn(name = "id_empresa")
+    private Empresa idEmpresa;
 }
