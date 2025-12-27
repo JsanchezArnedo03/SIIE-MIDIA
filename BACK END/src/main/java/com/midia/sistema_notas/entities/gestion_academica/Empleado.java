@@ -29,7 +29,7 @@ public class Empleado {
     @OneToOne
     @JoinColumn(name = "id:persona")
     private Persona idPersona;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }

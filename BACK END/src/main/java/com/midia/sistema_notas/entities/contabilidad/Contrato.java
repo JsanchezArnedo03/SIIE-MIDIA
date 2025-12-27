@@ -30,7 +30,7 @@ public class Contrato {
     private byte[] contratoPDF;
     @Column(name = "ruta_contrato")
     private String contratoRuta;
-
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }

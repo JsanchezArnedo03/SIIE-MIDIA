@@ -18,7 +18,7 @@ public class Cargo {
     private Long idCargo;
     @Column(name = "cargo")
     private String cargo;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }

@@ -24,6 +24,7 @@ public class CuentaContrable {
     private String tipoCuenta;
     @Column(name = "naturaleza")
     private String naturaleza;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }

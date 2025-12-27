@@ -26,6 +26,7 @@ public class DetalleFactura {
     private Integer cantidad;
     @Column(name = "precio_unitario")
     private Float precioUnitario;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
 }
