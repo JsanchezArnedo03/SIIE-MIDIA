@@ -1,5 +1,6 @@
 package com.midia.sistema_notas.entities.seguridad;
 
+import com.midia.sistema_notas.entities.gestion_academica.Persona;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,6 @@ public class Credencial {
     @Column(name = "password_")
     private String password;
     @OneToOne
-    @JoinColumn(name = "id_rol")
-    private Rol rol;
+    @JoinColumn(name = "id_persona")
+    private Persona persona;
 }

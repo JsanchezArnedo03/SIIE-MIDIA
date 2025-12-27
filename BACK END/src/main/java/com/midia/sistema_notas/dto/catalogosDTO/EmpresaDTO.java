@@ -21,9 +21,18 @@ public class EmpresaDTO {
     }
 
     public EmpresaDTO(Empresa empresa) {
+        if (empresa != null) {
+            this.idEmpresa = empresa.getIdEmpresa();
+            this.nombreComercial = empresa.getNombreComercial();
+            this.nit = empresa.getNit();
+            this.razonSocial = empresa.getRazonSocial();
+            this.direccion = empresa.getDireccion();
+            this.telefono = empresa.getTelefono();
+            this.email = empresa.getEmail();
+        }
     }
 
-    public EmpresaDTO toDTO(Empresa empresa) {
+    public static EmpresaDTO toDTO(Empresa empresa) {
         return new EmpresaDTO(empresa);
     }
 }

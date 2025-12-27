@@ -18,22 +18,7 @@ public class Estudiante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estudiante")
     private Long idEstudiante;
-    @ManyToOne(fetch = FetchType.EAGER) // Muchos estudiantes tienen un mismo tipo de documento
-    @JoinColumn(name = "id_tipo_documento")
-    private TipoDocumento idTipoDocumento;
-    @Column(name = "numero_documento")
-    private String numeroDocumento;
-    @Column(name = "fecha_nacimiento")
-    private Date fechaNacimiento;
-    @Column(name = "primer_nombre")
-    private String primerNombre;
-    @Column(name = "segundo_nombre")
-    private String segundoNombre;
-    @Column(name = "primer_apellido")
-    private String primerApellido;
-    @Column(name = "segundo_apellido")
-    private String segundoApellido;
-    @ManyToOne(fetch = FetchType.EAGER) // Muchos estudiantes tienen un mismo tipo de documento
+    @ManyToOne
     @JoinColumn(name = "id_tipo_sangre")
     private TipoSangre idTipoSangre;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -45,4 +30,7 @@ public class Estudiante {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_estado_estudiante")
     private EstadoEstudiante idEstadoEstudiante;
+    @OneToOne
+    @JoinColumn(name = "id_persona")
+    private Persona id_persona;
 }

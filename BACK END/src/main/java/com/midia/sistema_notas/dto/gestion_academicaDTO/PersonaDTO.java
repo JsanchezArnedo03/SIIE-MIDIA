@@ -20,7 +20,6 @@ public class PersonaDTO {
     private String telefono1;
     private String email;
     private RolDTO rol;
-    private CargoDTO cargo;
 
     public PersonaDTO() {
     }
