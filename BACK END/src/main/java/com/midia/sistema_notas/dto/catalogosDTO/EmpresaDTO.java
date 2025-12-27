@@ -29,10 +29,12 @@ public class EmpresaDTO {
             this.direccion = empresa.getDireccion();
             this.telefono = empresa.getTelefono();
             this.email = empresa.getEmail();
+            this.logo = empresa.getLogo();
         }
     }
 
     public static EmpresaDTO toDTO(Empresa empresa) {
         return new EmpresaDTO(empresa);
     }
+
 }

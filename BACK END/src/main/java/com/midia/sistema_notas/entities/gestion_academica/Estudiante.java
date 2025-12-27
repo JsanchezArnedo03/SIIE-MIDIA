@@ -1,6 +1,9 @@
 package com.midia.sistema_notas.entities.gestion_academica;
 
+import com.midia.sistema_notas.dto.catalogosDTO.EmpresaDTO;
+import com.midia.sistema_notas.dto.gestion_academicaDTO.EstudianteDTO;
 import com.midia.sistema_notas.entities.catalogos.*;
+import com.midia.sistema_notas.enums.EstadoEstudiante;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,13 +30,21 @@ public class Estudiante {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_tipo_condicion_psicologica")
     private CondicionPsicologica idTipoCondicionPsicologica;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_estado_estudiante")
-    private EstadoEstudiante idEstadoEstudiante;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado_estudiante")
+    private EstadoEstudiante estadoEstudiante;
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona id_persona;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empresa")
     private Empresa idEmpresa;
+
+    public Estudiante(EstudianteDTO estudianteDTO) {
+
+    }
+
+    public static Estudiante toEntity(EstudianteDTO estudianteDTO) {
+        return new Estudiante(estudianteDTO);
+    }
 }

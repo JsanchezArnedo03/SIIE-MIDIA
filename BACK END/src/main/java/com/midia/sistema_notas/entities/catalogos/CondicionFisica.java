@@ -1,5 +1,7 @@
 package com.midia.sistema_notas.entities.catalogos;
 
+import com.midia.sistema_notas.dto.catalogosDTO.CondicionFisicaDTO;
+import com.midia.sistema_notas.dto.catalogosDTO.EmpresaDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,9 +19,19 @@ public class CondicionFisica {
     private Long idCondicionFisica;
     @Column(name = "condicion_fisica")
     private String condicionFisica;
-    @Column(name = "cod_condicion")
-    private String codCondicion;
+    @Column(name = "descripcion")
+    private String descripcion;
 
+    public CondicionFisica(CondicionFisicaDTO condicionFisicaDTO) {
+        if (condicionFisicaDTO != null) {
+            this.idCondicionFisica = condicionFisicaDTO.getIdCondicionFisica();
+            this.condicionFisica = condicionFisicaDTO.getCondicionFisica();
+            this.descripcion = condicionFisicaDTO.getDescripcion();
+        }
+    }
+    public static CondicionFisica toEntity(CondicionFisicaDTO condicionFisicaDTO) {
+        return new CondicionFisica(condicionFisicaDTO);
+    }
 }
 
 
