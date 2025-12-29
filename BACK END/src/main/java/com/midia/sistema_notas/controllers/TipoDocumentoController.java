@@ -28,8 +28,7 @@ public class TipoDocumentoController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
+    
     @GetMapping("/findByName")
     public ResponseEntity<Optional<TipoDocumentoDTO>> findByName(String name) {
         try {
