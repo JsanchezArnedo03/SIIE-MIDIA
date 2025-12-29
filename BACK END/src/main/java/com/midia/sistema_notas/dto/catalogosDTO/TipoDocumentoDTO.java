@@ -15,9 +15,12 @@ public class TipoDocumentoDTO {
     }
 
     public TipoDocumentoDTO(TipoDocumento tipoDocumento) {
+        this.idTipoDocumento = tipoDocumento.getIdTipoDocumento();
+        this.tipoDocumento = tipoDocumento.getTipoDocumento();
+        this.codTipoDocumento = tipoDocumento.getCodTipoDocumento();
     }
 
-    public TipoDocumentoDTO toDTO(TipoDocumento tipoDocumento) {
+    public static TipoDocumentoDTO toDTO(TipoDocumento tipoDocumento) {
         return new TipoDocumentoDTO(tipoDocumento);
     }
 }

@@ -11,7 +11,7 @@ public class CondicionPsicologicaDTO {
 
     private Long idCondicionPsicologica;
     private String condicionPsicologica;
-    private String codCondicion;
+    private String descripcion;
 
     public CondicionPsicologicaDTO() {
     }
@@ -19,7 +19,7 @@ public class CondicionPsicologicaDTO {
     public CondicionPsicologicaDTO(CondicionPsicologica condicionPsicologica) {
     }
 
-    public CondicionPsicologicaDTO toDTO(CondicionPsicologica condicionPsicologica) {
+    public static CondicionPsicologicaDTO toDTO(CondicionPsicologica condicionPsicologica) {
         return new CondicionPsicologicaDTO(condicionPsicologica);
     }
 }

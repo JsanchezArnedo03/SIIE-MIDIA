@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface CondicionFisicaRepository extends JpaRepository<CondicionFisica, Long> {
-    @Query("SELECT c FROM CondicionFisica c WHERE condicion_fisica = :name")
+    @Query("SELECT c FROM CondicionFisica c WHERE c.condicionFisica = :name")
     Optional<CondicionFisica> findByName(String name);
 }

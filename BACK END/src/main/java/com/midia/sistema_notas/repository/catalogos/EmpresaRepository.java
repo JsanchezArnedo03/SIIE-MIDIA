@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
 
-    @Query("SELECT e FROM empresa e where e.nit = :nit")
+    @Query("SELECT e FROM Empresa e where e.nit = :nit")
     Optional<Empresa> findByNit(String nit);
 }

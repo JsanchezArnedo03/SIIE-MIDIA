@@ -2,19 +2,18 @@
 create database school;
 use school;
 
-
-
-/*1. MATRICUALD@ 2. RETIRAD@ 3. REPROBAD@*/
+/*1. MATRICUALD@ 2. RETIRAD@ 3. REPROBAD@
 CREATE TABLE estado_estudiante (
     id_estado_estudiante BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     estado_estudiante VARCHAR(20) NOT NULL
-);
+);*/
 
-/*1. APROBADA 2. REPROBADA*/
+/*1. APROBADA 2. REPROBADA
 CREATE TABLE estado_asignatura (
     id_estado_asignatura BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     estado_asignatura VARCHAR(50) NOT NULL
 );
+*/
 CREATE TABLE empresa (
     id_empresa BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre_comercial VARCHAR(350) NOT NULL,
@@ -24,20 +23,20 @@ CREATE TABLE empresa (
     telefono VARCHAR(20) NOT NULL,
     email VARCHAR(250) NOT NULL,
     logo LONGBLOB NOT NULL,
-    estado_empresa varchar(50) not null
+    estado_empresa VARCHAR(50) NOT NULL
 )	;
 
 CREATE TABLE condicion_fisica (
     id_condicion_fisica BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     condicion_fisica VARCHAR(50) NOT NULL,
-    cod_condicion VARCHAR(10) NOT NULL
+    descripcion TEXT NOT NULL
 );
 
 
 CREATE TABLE condicion_psicologica (
     id_condicion_psicologica BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     condicion_psicologica VARCHAR(50) NOT NULL,
-    cod_condicion VARCHAR(10)
+   descripcion TEXT NOT NULL
 );
 
 CREATE TABLE tipo_sangre (
@@ -100,7 +99,7 @@ CREATE TABLE estudiante (
     id_tipo_sangre BIGINT,
     id_tipo_condicion_fisica BIGINT,
     id_tipo_condicion_psicologica BIGINT,
-    id_estado_estudiante BIGINT,
+    id_estado_estudiante text,
     id_persona BIGINT,
     CONSTRAINT FOREIGN KEY (id_persona)
         REFERENCES school.persona (id_persona),
@@ -110,8 +109,6 @@ CREATE TABLE estudiante (
         REFERENCES school.condicion_fisica (id_condicion_fisica),
     CONSTRAINT FOREIGN KEY (id_tipo_condicion_psicologica)
         REFERENCES school.condicion_psicologica (id_condicion_psicologica),
-    CONSTRAINT FOREIGN KEY (id_estado_estudiante)
-        REFERENCES school.estado_estudiante (id_estado_estudiante),
     CONSTRAINT FOREIGN KEY (id_empresa)
         REFERENCES school.empresa (id_empresa)
 );
@@ -150,6 +147,7 @@ CREATE TABLE asignatura (
     id_asignatura BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre_asignatura VARCHAR(20) NOT NULL,
     cod_asignatura VARCHAR(12) NOT NULL,
+    /*intensidad_horaria int not null*/
     id_empresa BIGINT,
     CONSTRAINT FOREIGN KEY (id_empresa)
         REFERENCES school.empresa (id_empresa)
@@ -237,6 +235,7 @@ CREATE TABLE actividad_evaluativa (
     CONSTRAINT FOREIGN KEY (id_tipo_actividad)
         REFERENCES tipo_actividad (id_tipo_actividad)
 );
+
 CREATE TABLE nota_estudiante (
     id_nota_estudiante BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_estudiante BIGINT,
@@ -257,6 +256,7 @@ CREATE TABLE nota_definitiva_periodo (
     id_estudiante BIGINT,
     id_asignatura BIGINT,
     id_periodo BIGINT,
+    estado_asignatura text,
     promedio_final DOUBLE,
     CONSTRAINT FOREIGN KEY (id_estudiante)
         REFERENCES school.estudiante (id_estudiante),
@@ -292,7 +292,13 @@ CREATE TABLE contrato (
     CONSTRAINT FOREIGN KEY (id_empresa)
         REFERENCES school.empresa (id_empresa)
 );
+/*1. TRANSFERENCIA  2. EFECTIVO  3.PSE  4. CONSIGNACION*/
+CREATE TABLE forma_pago(
+id_forma_pago BIGINT primary key not null auto_increment,
+forma_pago varchar(150)not null
+);
 
+/*1. CONTADO 2. CREDITO*/
 CREATE TABLE metodo_pago (
     id_metodo_pago BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     metodo_pago VARCHAR(50) NOT NULL
@@ -346,11 +352,11 @@ CREATE TABLE asiento_contable (
         REFERENCES school.comprobante (id_comprobante),
     CONSTRAINT FOREIGN KEY (id_cuenta)
         REFERENCES school.cuentas_contables (id_cuenta),
-        id_empresa BIGINT,
+    id_empresa BIGINT,
     CONSTRAINT FOREIGN KEY (id_empresa)
         REFERENCES school.empresa (id_empresa)
 );
-
+/*1. PAGADA  2. PENDIENTE POR PAGAR*/
 CREATE TABLE estado_factura (
     id_estado_factura BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     estado_factura VARCHAR(50) NOT NULL
@@ -392,10 +398,7 @@ CREATE TABLE factura (
     CONSTRAINT FOREIGN KEY (id_cliente)
         REFERENCES school.persona (id_persona),
     CONSTRAINT FOREIGN KEY (metodo_pago)
-        REFERENCES school.metodo_pago (id_metodo_pago),
-    id_empresa BIGINT,
-    CONSTRAINT FOREIGN KEY (id_empresa)
-        REFERENCES school.empresa (id_empresa)
+        REFERENCES school.metodo_pago (id_metodo_pago)
 );
 
 CREATE TABLE detalle_factura (

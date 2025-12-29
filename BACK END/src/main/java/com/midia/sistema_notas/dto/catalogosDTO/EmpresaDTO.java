@@ -2,6 +2,7 @@ package com.midia.sistema_notas.dto.catalogosDTO;
 
 
 import com.midia.sistema_notas.entities.catalogos.Empresa;
+import com.midia.sistema_notas.enums.EstadoEmpresa;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class EmpresaDTO {
     private String direccion;
     private String telefono;
     private String email;
+    private EstadoEmpresa estado = EstadoEmpresa.ACTIVO;
     private byte[] logo;
 
     public EmpresaDTO() {

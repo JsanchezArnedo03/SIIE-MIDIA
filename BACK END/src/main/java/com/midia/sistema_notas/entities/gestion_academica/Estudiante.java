@@ -31,8 +31,8 @@ public class Estudiante {
     @JoinColumn(name = "id_tipo_condicion_psicologica")
     private CondicionPsicologica idTipoCondicionPsicologica;
     @Enumerated(EnumType.STRING)
-    @Column(name = "estado_estudiante")
-    private EstadoEstudiante estadoEstudiante;
+    @Column(name = "id_estado_estudiante")
+    private EstadoEstudiante estadoEstudiante = EstadoEstudiante.MATRICULADO;
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona id_persona;

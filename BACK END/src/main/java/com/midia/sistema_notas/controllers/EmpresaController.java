@@ -29,7 +29,6 @@ public class EmpresaController {
     @GetMapping("/findAll")
     public ResponseEntity<List<EmpresaDTO>> findAll() {
         try {
-            service.findAll();
             return  ResponseEntity.ok(service.findAll());
         }catch (RuntimeException e) {
             return ResponseEntity.notFound().build();

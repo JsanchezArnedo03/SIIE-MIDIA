@@ -1,6 +1,7 @@
 package com.midia.sistema_notas.entities.catalogos;
 
 import com.midia.sistema_notas.dto.catalogosDTO.CondicionFisicaDTO;
+import com.midia.sistema_notas.dto.catalogosDTO.CondicionPsicologicaDTO;
 import com.midia.sistema_notas.dto.catalogosDTO.EmpresaDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,10 @@ public class CondicionFisica {
             this.descripcion = condicionFisicaDTO.getDescripcion();
         }
     }
+
+    public CondicionFisica(CondicionPsicologicaDTO condicionPsicologicaDTO) {
+    }
+
     public static CondicionFisica toEntity(CondicionFisicaDTO condicionFisicaDTO) {
         return new CondicionFisica(condicionFisicaDTO);
     }

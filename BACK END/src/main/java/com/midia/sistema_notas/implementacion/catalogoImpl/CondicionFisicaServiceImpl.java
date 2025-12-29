@@ -1,9 +1,7 @@
 package com.midia.sistema_notas.implementacion.catalogoImpl;
 
 import com.midia.sistema_notas.dto.catalogosDTO.CondicionFisicaDTO;
-import com.midia.sistema_notas.dto.catalogosDTO.EmpresaDTO;
 import com.midia.sistema_notas.entities.catalogos.CondicionFisica;
-import com.midia.sistema_notas.entities.catalogos.Empresa;
 import com.midia.sistema_notas.repository.catalogos.CondicionFisicaRepository;
 import com.midia.sistema_notas.service.catalogosService.CondicionFisicaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +32,12 @@ public class CondicionFisicaServiceImpl implements CondicionFisicaService {
                     CondicionFisica guardada = repository.save(nuevaCondicion);
                     return ResponseEntity.status(HttpStatus.CREATED).body(CondicionFisicaDTO.toDTO(guardada));
                 });
+    }
+
+    @Override
+    public Optional<CondicionFisicaDTO> findByName(String name) {
+        return repository.findByName(name)
+                .map(CondicionFisicaDTO::toDTO);
     }
 }
 
