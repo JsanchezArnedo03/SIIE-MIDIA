@@ -12,7 +12,7 @@ public class CondicionFisicaDTO {
 
     private Long idCondicionFisica;
     private String condicionFisica;
-    private String codCondicion;
+    private String descripcion;
 
     public CondicionFisicaDTO(){
 
@@ -21,7 +21,7 @@ public class CondicionFisicaDTO {
     public CondicionFisicaDTO(CondicionFisica condicionFisica) {
     }
 
-    public CondicionFisicaDTO toDTO(CondicionFisica condicionFisica){
+    public static CondicionFisicaDTO toDTO(CondicionFisica condicionFisica){
         return new CondicionFisicaDTO(condicionFisica);
     }
 }

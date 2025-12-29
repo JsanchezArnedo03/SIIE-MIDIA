@@ -1,12 +1,9 @@
 package com.midia.sistema_notas.entities.catalogos;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.midia.sistema_notas.dto.catalogosDTO.EmpresaDTO;
+import com.midia.sistema_notas.enums.EstadoEmpresa;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,5 +39,24 @@ public class Empresa {
     
     @Column(name = "logo")
     private byte[] logo;
-    
+
+    @Enumerated(EnumType.STRING) // Para que en la DB se guarde el texto "ACTIVO", etc.
+    @Column(name = "estado")
+    private EstadoEmpresa estado = EstadoEmpresa.ACTIVO; // Valor por defecto
+
+    public Empresa(EmpresaDTO empresaDTO) {
+        if (empresaDTO != null) {
+            this.idEmpresa = empresaDTO.getIdEmpresa();
+            this.nombreComercial = empresaDTO.getNombreComercial();
+            this.nit = empresaDTO.getNit();
+            this.razonSocial = empresaDTO.getRazonSocial();
+            this.direccion = empresaDTO.getDireccion();
+            this.telefono = empresaDTO.getTelefono();
+            this.email = empresaDTO.getEmail();
+            this.logo = empresaDTO.getLogo();
+        }
+    }
+    public static Empresa toEntity(EmpresaDTO empresaDTO) {
+        return new Empresa(empresaDTO);
+    }
 }
