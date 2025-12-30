@@ -32,9 +32,6 @@ public class Estudiante extends Persona{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_tipo_condicion_psicologica")
     private CondicionPsicologica idTipoCondicionPsicologica;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "id_estado_estudiante")
-    private EstadoEstudiante estadoEstudiante;
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona id_persona;

@@ -69,7 +69,10 @@ CREATE TABLE grado (
     CONSTRAINT FOREIGN KEY (id_empresa)
         REFERENCES school.empresa (id_empresa)
 );
-
+create table curso(
+id_curso BIGINT primary key not null auto_increment,
+nombre_curso varchar(150)
+);
 CREATE TABLE persona (
     id_persona BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_empresa BIGINT,
@@ -94,7 +97,6 @@ CREATE TABLE estudiante (
     tipo_sangre TEXT,
     id_tipo_condicion_fisica BIGINT,
     id_tipo_condicion_psicologica BIGINT,
-    id_estado_estudiante text,
     id_persona BIGINT  primary key,
     CONSTRAINT FOREIGN KEY (id_persona)
         REFERENCES school.persona (id_persona),
@@ -109,6 +111,7 @@ CREATE TABLE estudiante (
 CREATE TABLE empleado (
     id_empresa BIGINT,
     fecha_contratacion DATE NOT NULL,
+    estado_empleado varchar(50)not null,
     salario DECIMAL(10 , 2 ),
     id_cargo BIGINT,
     id_persona BIGINT primary key,
@@ -120,12 +123,15 @@ CREATE TABLE empleado (
         REFERENCES school.empresa (id_empresa)
 );
 
-CREATE TABLE estudiante_x_grado (
-    id_estudiante_x_grado BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CREATE TABLE matricula (
+    id_matricula BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_estudiante BIGINT,
     id_grado BIGINT,
+    fecha_matricula timestamp default current_timestamp,
+    estado_matricula varchar(50)not null,
+    observaciones text,
     CONSTRAINT FOREIGN KEY (id_estudiante)
-        REFERENCES school.estudiante (id_estudiante),
+        REFERENCES school.persona (id_persona),
     CONSTRAINT FOREIGN KEY (id_grado)
         REFERENCES school.grado (id_grado),
     id_empresa BIGINT,
@@ -137,7 +143,7 @@ CREATE TABLE asignatura (
     id_asignatura BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre_asignatura VARCHAR(20) NOT NULL,
     cod_asignatura VARCHAR(12) NOT NULL,
-    /*intensidad_horaria int not null*/
+    intensidad_horaria int not null,
     id_empresa BIGINT,
     CONSTRAINT FOREIGN KEY (id_empresa)
         REFERENCES school.empresa (id_empresa)
@@ -150,7 +156,7 @@ CREATE TABLE empleado_x_asignatura (
     CONSTRAINT FOREIGN KEY (id_asignatura)
         REFERENCES school.asignatura (id_asignatura),
     CONSTRAINT FOREIGN KEY (id_empleado)
-        REFERENCES school.empleado (id_empleado),
+        REFERENCES school.persona (id_persona),
     id_empresa BIGINT,
     CONSTRAINT FOREIGN KEY (id_empresa)
         REFERENCES school.empresa (id_empresa)
@@ -174,7 +180,7 @@ CREATE TABLE estudiante_x_acudiente (
     id_estudiante BIGINT,
     id_acudiente BIGINT,
     CONSTRAINT FOREIGN KEY (id_estudiante)
-        REFERENCES school.estudiante (id_estudiante),
+        REFERENCES school.persona (id_persona),
     CONSTRAINT FOREIGN KEY (id_acudiente)
         REFERENCES school.persona (id_persona),
     id_empresa BIGINT,
@@ -234,7 +240,7 @@ CREATE TABLE nota_estudiante (
     observacion VARCHAR(500),
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT FOREIGN KEY (id_estudiante)
-        REFERENCES school.estudiante (id_estudiante),
+        REFERENCES school.persona (id_persona),
     CONSTRAINT FOREIGN KEY (id_actividad)
         REFERENCES school.actividad_evaluativa (id_actividad),
     id_empresa BIGINT,
@@ -249,7 +255,7 @@ CREATE TABLE nota_definitiva_periodo (
     estado_asignatura text,
     promedio_final DOUBLE,
     CONSTRAINT FOREIGN KEY (id_estudiante)
-        REFERENCES school.estudiante (id_estudiante),
+        REFERENCES school.persona (id_persona),
     CONSTRAINT FOREIGN KEY (id_asignatura)
         REFERENCES school.asignatura (id_asignatura),
     CONSTRAINT FOREIGN KEY (id_periodo)

@@ -8,7 +8,6 @@ import com.midia.sistema_notas.entities.catalogos.Empresa;
 import com.midia.sistema_notas.entities.catalogos.TipoDocumento;
 import com.midia.sistema_notas.entities.gestion_academica.Estudiante;
 import com.midia.sistema_notas.entities.seguridad.Rol;
-import com.midia.sistema_notas.enums.EstadoEstudiante;
 import com.midia.sistema_notas.repository.catalogos.CondicionFisicaRepository;
 import com.midia.sistema_notas.repository.catalogos.CondicionPsicologicaRepository;
 import com.midia.sistema_notas.repository.catalogos.EmpresaRepository;
@@ -62,7 +61,6 @@ public class EstudianteServiceImpl implements EstudianteService {
             Optional<Rol> rol = rolRepository.findById(estudiante.getIdPersona().getRol().getIdRol());
             Optional<Empresa> empresa = empresaRepository.findById(idEmpresa);
             Estudiante nuevoEstudiante = new Estudiante();
-            nuevoEstudiante.setEstadoEstudiante(EstadoEstudiante.MATRICULADO);
             nuevoEstudiante.setIdTipoDocumento(tipoDocumento.get());
             nuevoEstudiante.setIdEmpresa(empresa.get());
             nuevoEstudiante.setNumeroDocumento(estudiante.getIdPersona().getNumeroDocumento());
@@ -88,7 +86,7 @@ public class EstudianteServiceImpl implements EstudianteService {
         Long idEmpresa = jwtUtils.getEmpresaIdFromToken(jwt);
         if (documento == null) {
             return ResponseEntity.badRequest().body("Documento requerido");
-        }
+        }/*
         return repository.findBynumeroDocumento(documento)
                 .map(estudiante ->
                 {
@@ -102,5 +100,6 @@ public class EstudianteServiceImpl implements EstudianteService {
                     repository.save(estudiante);
                     return ResponseEntity.ok("El estudiante se retiro satisfactoriamente");
                 }).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudiante no encontrado con el documento: " + documento));
-    }
+    }*/
+    return null;}
 }

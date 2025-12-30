@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GradoRepository extends JpaRepository<Grado,Long> {
-
+    Grado findFirstByIdGradoGreaterThanOrderByIdGradoAsc(Long id);
 }
