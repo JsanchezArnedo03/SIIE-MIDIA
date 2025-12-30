@@ -22,14 +22,13 @@ public class EstudianteDTO {
     private CondicionPsicologicaDTO idTipoCondiconPsicologica;
     private EstadoEstudiante idEstadoEstudiante;
     private Persona idPersona;
-    private EstadoEstudiante estadoEstudiante;
     public EstudianteDTO() {
     }
 
     public EstudianteDTO(Estudiante estudiante) {
     }
 
-    public EstudianteDTO toDTO(Estudiante estudiante) {
+    public static EstudianteDTO toDTO(Estudiante estudiante) {
         return new EstudianteDTO(estudiante);
     }
 }
