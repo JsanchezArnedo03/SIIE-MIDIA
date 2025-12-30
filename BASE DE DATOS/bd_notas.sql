@@ -39,10 +39,6 @@ CREATE TABLE condicion_psicologica (
    descripcion TEXT NOT NULL
 );
 
-CREATE TABLE tipo_sangre (
-    id_tipo_sangre BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    tipo_sangre VARCHAR(3) NOT NULL
-);
 
 CREATE TABLE tipo_documento (
     id_tipo_documento BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -78,7 +74,7 @@ CREATE TABLE persona (
     id_persona BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_empresa BIGINT,
     id_tipo_documento BIGINT,
-    numero_documento VARCHAR(50) NOT NULL,
+    numero_documento VARCHAR(50) NOT NULL UNIQUE,
     primer_nombre VARCHAR(50) NOT NULL,
     segundo_nombre VARCHAR(50),
     primer_apellido VARCHAR(50) NOT NULL,
@@ -93,18 +89,15 @@ CREATE TABLE persona (
         REFERENCES school.empresa (id_empresa)
 );
 CREATE TABLE estudiante (
-    id_estudiante BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_empresa BIGINT,
     fecha_nacimiento DATE,
-    id_tipo_sangre BIGINT,
+    tipo_sangre TEXT,
     id_tipo_condicion_fisica BIGINT,
     id_tipo_condicion_psicologica BIGINT,
     id_estado_estudiante text,
-    id_persona BIGINT,
+    id_persona BIGINT  primary key,
     CONSTRAINT FOREIGN KEY (id_persona)
         REFERENCES school.persona (id_persona),
-    CONSTRAINT FOREIGN KEY (id_tipo_sangre)
-        REFERENCES school.tipo_sangre (id_tipo_sangre),
     CONSTRAINT FOREIGN KEY (id_tipo_condicion_fisica)
         REFERENCES school.condicion_fisica (id_condicion_fisica),
     CONSTRAINT FOREIGN KEY (id_tipo_condicion_psicologica)
@@ -114,15 +107,12 @@ CREATE TABLE estudiante (
 );
 
 CREATE TABLE empleado (
-    id_empleado BIGINT PRIMARY KEY,
     id_empresa BIGINT,
     fecha_contratacion DATE NOT NULL,
     salario DECIMAL(10 , 2 ),
     id_cargo BIGINT,
-    id_persona BIGINT,
+    id_persona BIGINT primary key,
     CONSTRAINT FOREIGN KEY (id_persona)
-        REFERENCES school.persona (id_persona),
-    CONSTRAINT FOREIGN KEY (id_empleado)
         REFERENCES school.persona (id_persona),
     CONSTRAINT FOREIGN KEY (id_cargo)
         REFERENCES school.cargo (id_cargo),
