@@ -5,6 +5,7 @@ import com.midia.sistema_notas.dto.catalogosDTO.*;
 import com.midia.sistema_notas.entities.gestion_academica.Estudiante;
 import com.midia.sistema_notas.entities.gestion_academica.Persona;
 import com.midia.sistema_notas.enums.EstadoEstudiante;
+import com.midia.sistema_notas.enums.TipoSangre;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -16,7 +17,7 @@ public class EstudianteDTO {
 
     private Long idEstudiante;
     private Date fechaNacimiento;
-    private TipoSangreDTO idTipoSangre;
+    private TipoSangre TipoSangre;
     private CondicionFisicaDTO idTipoCondicionFisica;
     private CondicionPsicologicaDTO idTipoCondiconPsicologica;
     private EstadoEstudiante idEstadoEstudiante;

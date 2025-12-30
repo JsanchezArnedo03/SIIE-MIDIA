@@ -1,10 +1,9 @@
 package com.midia.sistema_notas.repository.gestion_academica;
 
-import com.midia.sistema_notas.entities.gestion_academica.Persona;
+import com.midia.sistema_notas.entities.seguridad.Rol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonaRepository extends JpaRepository<Persona,Long> {
-
+public interface RolRepository extends JpaRepository<Rol, Long> {
 }
