@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface MatriculaService {
 
     ResponseEntity<String> matricular(@RequestBody MatriculaDTO matricula, @RequestHeader("Authorization") String token);
-    ResponseEntity<String> promovido ();
-
+    ResponseEntity<String> promover ();
+    ResponseEntity<String> retirar (@RequestBody String numeroDocumento, @RequestHeader("Authorization") String token);
 
 }

@@ -79,27 +79,4 @@ public class EstudianteServiceImpl implements EstudianteService {
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevoEstudiante);
         }
     }
-
-    @Override
-    public ResponseEntity<String> retirarEstudiante(String documento, String token) {
-        String jwt = token.startsWith("Bearer ") ? token.substring(7) : token;
-        Long idEmpresa = jwtUtils.getEmpresaIdFromToken(jwt);
-        if (documento == null) {
-            return ResponseEntity.badRequest().body("Documento requerido");
-        }/*
-        return repository.findBynumeroDocumento(documento)
-                .map(estudiante ->
-                {
-                    if (estudiante.getEstadoEstudiante() == EstadoEstudiante.RETIRADO) {
-                        return ResponseEntity.status(HttpStatus.CONFLICT).body("El estudiante no se encuentra matriculado en ninguna institucion");
-                    }
-                    if (!estudiante.getIdEmpresa().getIdEmpresa().equals(idEmpresa)) {
-                        return ResponseEntity.status(HttpStatus.CONFLICT).body("No tiene permitido retirar este estudiante");
-                    }
-                    estudiante.setEstadoEstudiante(EstadoEstudiante.RETIRADO);
-                    repository.save(estudiante);
-                    return ResponseEntity.ok("El estudiante se retiro satisfactoriamente");
-                }).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudiante no encontrado con el documento: " + documento));
-    }*/
-    return null;}
 }

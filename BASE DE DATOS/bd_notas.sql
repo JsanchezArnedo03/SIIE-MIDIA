@@ -139,6 +139,18 @@ CREATE TABLE matricula (
         REFERENCES school.empresa (id_empresa)
 );
 
+CREATE TABLE auditoria_matricula (
+    id_auditoria_matricula BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_matricula BIGINT,
+    nuevo_estado VARCHAR(50) NOT NULL,
+    fecha_actualizacion_estado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_persona BIGINT,
+    CONSTRAINT FOREIGN KEY (id_matricula)
+        REFERENCES school.matricula (id_matricula),
+    CONSTRAINT FOREIGN KEY (id_persona)
+        REFERENCES school.persona (id_persona)
+);
+
 CREATE TABLE asignatura (
     id_asignatura BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre_asignatura VARCHAR(20) NOT NULL,

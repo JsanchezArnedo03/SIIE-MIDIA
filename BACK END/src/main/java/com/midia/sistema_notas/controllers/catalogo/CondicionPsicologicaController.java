@@ -1,4 +1,4 @@
-package com.midia.sistema_notas.controllers;
+package com.midia.sistema_notas.controllers.catalogo;
 
 import com.midia.sistema_notas.dto.catalogosDTO.CondicionPsicologicaDTO;
 import com.midia.sistema_notas.service.catalogosService.CondicionPsicologicaService;

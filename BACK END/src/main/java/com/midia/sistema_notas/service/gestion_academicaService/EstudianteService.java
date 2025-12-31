@@ -8,5 +8,4 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface EstudianteService {
     ResponseEntity<Object> createEstudiante(@RequestBody EstudianteDTO estudiante, @RequestHeader("Authorization")String token);
-    ResponseEntity<String> retirarEstudiante(@RequestParam String documento, @RequestHeader("Authorization")String token);
 }
