@@ -1,7 +1,6 @@
-package com.midia.sistema_notas.controllers;
+package com.midia.sistema_notas.controllers.gestionacademica;
 
 import com.midia.sistema_notas.dto.gestion_academicaDTO.EstudianteDTO;
-import com.midia.sistema_notas.entities.gestion_academica.Estudiante;
 import com.midia.sistema_notas.service.gestion_academicaService.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,15 +21,6 @@ public class EstudianteController {
             return ResponseEntity.ok(estudiante);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    @PutMapping("/retirar")
-    public ResponseEntity<String> retirarEstudiante(@RequestParam String documento, @RequestHeader("Authorization") String token) {
-        try {
-            return service.retirarEstudiante(documento, token);
-        } catch (HttpClientErrorException.Unauthorized u) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 }
