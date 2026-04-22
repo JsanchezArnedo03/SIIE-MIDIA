@@ -2,7 +2,7 @@ package com.midia.sistema_notas.dto.gestion_academicaDTO;
 
 
 
-import com.midia.sistema_notas.entities.gestion_academica.Grado;
+import com.midia.sistema_notas.entities.catalogos.Grado;
 import lombok.Data;
 @Data
 public class GradoDTO {

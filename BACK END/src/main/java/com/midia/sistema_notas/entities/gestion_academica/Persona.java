@@ -1,7 +1,7 @@
 package com.midia.sistema_notas.entities.gestion_academica;
 
 import com.midia.sistema_notas.entities.catalogos.TipoDocumento;
-import com.midia.sistema_notas.entities.seguridad.Rol;
+import com.midia.sistema_notas.entities.catalogos.Rol;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

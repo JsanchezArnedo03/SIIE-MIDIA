@@ -1,6 +1,6 @@
 package com.midia.sistema_notas.dto.seguridadDTO;
 
-import com.midia.sistema_notas.entities.seguridad.Rol;
+import com.midia.sistema_notas.entities.catalogos.Rol;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

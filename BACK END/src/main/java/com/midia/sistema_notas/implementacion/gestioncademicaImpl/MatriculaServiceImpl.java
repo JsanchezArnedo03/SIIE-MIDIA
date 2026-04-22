@@ -4,7 +4,7 @@ import com.midia.sistema_notas.config.JwtUtils;
 import com.midia.sistema_notas.dto.gestion_academicaDTO.MatriculaDTO;
 import com.midia.sistema_notas.entities.catalogos.Empresa;
 import com.midia.sistema_notas.entities.gestion_academica.Estudiante;
-import com.midia.sistema_notas.entities.gestion_academica.Grado;
+import com.midia.sistema_notas.entities.catalogos.Grado;
 import com.midia.sistema_notas.entities.gestion_academica.Matricula;
 import com.midia.sistema_notas.enums.EstadoEstudiante;
 import com.midia.sistema_notas.repository.catalogos.EmpresaRepository;

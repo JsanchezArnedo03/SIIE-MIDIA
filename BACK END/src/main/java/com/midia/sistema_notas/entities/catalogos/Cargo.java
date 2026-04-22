@@ -1,24 +1,28 @@
-package com.midia.sistema_notas.entities.gestion_academica;
+package com.midia.sistema_notas.entities.catalogos;
 
-import com.midia.sistema_notas.entities.catalogos.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "cargo")
+import java.util.List;
+
 @Entity
+@Table(name = "cargo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cargo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cargo")
     private Long idCargo;
-    @Column(name = "cargo")
+
     private String cargo;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_empresa")
-    private Empresa idEmpresa;
+
+    private String descripcion;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_permiso_rol")
+    private PermisoRol permisoRol; // ✅ correcto
 }

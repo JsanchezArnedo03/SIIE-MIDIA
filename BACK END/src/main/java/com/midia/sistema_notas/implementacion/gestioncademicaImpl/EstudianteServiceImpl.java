@@ -7,7 +7,7 @@ import com.midia.sistema_notas.entities.catalogos.CondicionPsicologica;
 import com.midia.sistema_notas.entities.catalogos.Empresa;
 import com.midia.sistema_notas.entities.catalogos.TipoDocumento;
 import com.midia.sistema_notas.entities.gestion_academica.Estudiante;
-import com.midia.sistema_notas.entities.seguridad.Rol;
+import com.midia.sistema_notas.entities.catalogos.Rol;
 import com.midia.sistema_notas.repository.catalogos.CondicionFisicaRepository;
 import com.midia.sistema_notas.repository.catalogos.CondicionPsicologicaRepository;
 import com.midia.sistema_notas.repository.catalogos.EmpresaRepository;

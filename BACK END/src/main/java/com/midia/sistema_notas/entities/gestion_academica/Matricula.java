@@ -1,6 +1,7 @@
 package com.midia.sistema_notas.entities.gestion_academica;
 
 import com.midia.sistema_notas.entities.catalogos.Empresa;
+import com.midia.sistema_notas.entities.catalogos.Grado;
 import com.midia.sistema_notas.enums.EstadoEstudiante;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
